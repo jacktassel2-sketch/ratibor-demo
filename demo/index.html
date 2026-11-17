@@ -339,7 +339,9 @@ body{background:var(--ash);color:var(--ink)}
 .form input,.form select{background:#120d0b;border-color:var(--ash2);color:#fff}
 .castle .h2{text-shadow:0 2px 20px rgba(0,0,0,.6)}
 @media (prefers-reduced-motion:reduce){.cbg .glow{animation:none}}
-.seg.zone{margin-top:10px}.seg.zone button{font-size:13.5px}
+.f select{border:1.5px solid var(--ash2);background:var(--coal2);color:var(--ink);border-radius:10px;padding:12px;min-height:48px;width:100%}
+.feehint{margin:10px 0 0;font-size:14px;font-weight:600;color:var(--copper2)}.feehint.ok{color:#a5d394}.feehint.warn{color:#ff9d8f}
+.feehint.shake{animation:shk .4s}@keyframes shk{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @media (max-width:760px){.hero .bg video{transform:none!important;transition:none!important}}
 </style>
 </head>
@@ -472,7 +474,7 @@ body{background:var(--ash);color:var(--ink)}
       <div><h4>Часы работы</h4><p>Пн–Пт и Вс 11:00–23:00</p><p>Сб 11:00–00:00</p></div>
       <div><h4>Телефоны</h4><p><a href="tel:+79302220032" style="text-decoration:none">+7 930 222-00-32</a></p><p><a href="tel:+74924423715" style="text-decoration:none">+7 (49244) 2-37-15</a></p></div>
     </div>
-    <p class="note" style="color:#a8988a;margin-top:28px">Доставка по Александрову 200 ₽, за город 500 ₽. Самовывоз с Калининской, 1/1 бесплатно.</p>
+    <p class="note" style="color:#a8988a;margin-top:28px">Доставка по Александрову бесплатно от 1 000 ₽ (меньше — 200 ₽). В Балакирево, Струнино и Карабаново бесплатно, заказ от 3 500 ₽. Самовывоз с Калининской, 1/1.</p>
   </div>
 </section>
 
@@ -505,8 +507,8 @@ body{background:var(--ash);color:var(--ink)}
 
       <div id="addr">
         <div class="seg" style="margin-top:14px"><button type="button" class="on" data-ht="flat">Квартира</button><button type="button" data-ht="house">Частный дом</button></div>
-        <div class="f" data-f="city"><label for="aCity">Город или посёлок</label><input id="aCity" value="Александров"><span class="e">Укажите город</span></div>
-        <div class="seg zone"><button type="button" class="on" data-zone="city">По Александрову · 200 ₽</button><button type="button" data-zone="out">За город · 500 ₽</button></div>
+        <div class="f" data-f="city"><label for="aCity">Город</label><select id="aCity"><option>Александров</option><option>Балакирево</option><option>Струнино</option><option>Карабаново</option></select><span class="e">Укажите город</span></div>
+        <p class="feehint" id="feeHint"></p>
         <div class="two">
           <div class="f" data-f="street"><label for="aStreet">Улица</label><input id="aStreet" autocomplete="address-line1"><span class="e">Укажите улицу</span></div>
           <div class="f" data-f="house"><label for="aHouse">Дом</label><input id="aHouse"><span class="e">Укажите дом</span></div>
@@ -615,16 +617,21 @@ document.getElementById('closeCart').addEventListener('click',closeD);ov.addEven
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeUp();closeD()}});
 let mode='delivery',ht='flat',pay='card',done=false,upShown=false;
 const PAYN={card:'Картой онлайн','courier-card':'Картой при получении',cash:'Наличными при получении'};
-let zone='city';const ZF={city:200,out:500};const fee=()=>mode==='delivery'&&sum()>0?ZF[zone]:0;const total=()=>sum()+fee();
-function feeNote(){const n=document.getElementById('sumNote');if(n)n.textContent=mode==='delivery'?('в том числе доставка '+(zone==='city'?'по Александрову':'за город')+' '+rub(fee())):'самовывоз, без доставки'}
+// доставка: Александров бесплатно от 1 000 ₽ (меньше — 200 ₽); Балакирево, Струнино, Карабаново бесплатно, заказ от 3 500 ₽
+const town=()=>document.getElementById('aCity').value;const MAIN='Александров',FREE_MAIN=1000,MIN_TOWN=3500,FEE_MAIN=200;
+const fee=()=>mode==='delivery'&&sum()>0&&town()===MAIN&&sum()<FREE_MAIN?FEE_MAIN:0;const total=()=>sum()+fee();
+const short=()=>mode==='delivery'&&town()!==MAIN&&sum()<MIN_TOWN?MIN_TOWN-sum():0;
+function feeNote(){const n=document.getElementById('sumNote'),h=document.getElementById('feeHint');if(!n)return;
+  if(mode!=='delivery'){n.textContent='самовывоз, без доставки';if(h)h.textContent='';return}
+  const t=town(),s=sum();
+  if(t===MAIN){n.textContent=fee()?'в том числе доставка '+rub(fee()):'доставка по Александрову бесплатно';if(h){h.className='feehint'+(fee()?'':' ok');h.textContent=fee()?'Добавьте ещё '+rub(FREE_MAIN-s)+' — доставка станет бесплатной':'Доставка по Александрову бесплатно'}}
+  else{n.textContent=short()?'доставка в '+t+' от '+rub(MIN_TOWN):'доставка в '+t+' бесплатно';if(h){h.className='feehint'+(short()?' warn':' ok');h.textContent=short()?'Доставка в '+t+' — от '+rub(MIN_TOWN)+'. Добавьте ещё '+rub(short()):'Доставка в '+t+' бесплатно'}}}
 function goLabel(){feeNote();const s=rub(total());document.getElementById('go').textContent=pay==='card'?'Оплатить картой, '+s:'Оформить заказ, '+s}
 function drawLines(){const ids=Object.keys(cart);document.getElementById('emptyCart').classList.toggle('hide',ids.length>0||done);
   document.getElementById('checkout').classList.toggle('hide',!ids.length||done);document.getElementById('df').classList.toggle('hide',!ids.length||done);
   document.getElementById('lines').innerHTML=done?'':ids.map(id=>{const x=byId[id];return `<div class="li"><div class="t"><img src="img/${x.id}.webp" alt="" onerror="this.remove()"></div><div><b>${esc(x.n)}</b><span class="pr">${rub(x.p)} × ${cart[id]}</span></div><div class="step sm" data-id="${id}"><button data-a="-" aria-label="Убрать">−</button><span>${cart[id]}</span><button data-a="+" aria-label="Добавить">+</button></div></div>`}).join('');
   document.getElementById('total').textContent=rub(total());document.getElementById('upSum').textContent=rub(total());goLabel()}
-function setZone(z){zone=z;document.querySelectorAll('[data-zone]').forEach(x=>x.classList.toggle('on',x.dataset.zone===z));drawLines()}
-document.querySelectorAll('[data-zone]').forEach(b=>b.addEventListener('click',()=>{zoneManual=true;setZone(b.dataset.zone)}));let zoneManual=false;
-document.getElementById('aCity').addEventListener('input',e=>{const t=e.target.value.trim().toLowerCase();if(!t)return;setZone(/^г?\.?\s*александров/.test(t)?'city':'out')});
+document.getElementById('aCity').addEventListener('change',drawLines);
 document.getElementById('pays').addEventListener('click',e=>{const b=e.target.closest('[data-pay]');if(!b)return;pay=b.dataset.pay;document.querySelectorAll('.pay').forEach(x=>x.classList.toggle('on',x===b));goLabel()});
 document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('addr').classList.toggle('hide',mode!=='delivery');document.getElementById('pickupInfo').classList.toggle('hide',mode==='delivery');drawLines()}));
 document.querySelectorAll('[data-ht]').forEach(b=>b.addEventListener('click',()=>{ht=b.dataset.ht;document.querySelectorAll('[data-ht]').forEach(x=>x.classList.toggle('on',x===b));document.querySelector('.flat-only').classList.toggle('hide',ht!=='flat');document.querySelector('.house-only').classList.toggle('hide',ht==='flat')}));
@@ -634,7 +641,7 @@ function validate(){const need=[['name','cName',x=>x.length>1],['phone','cPhone'
   let first=null;document.querySelectorAll('.f[data-f]').forEach(f=>f.classList.remove('err'));
   need.forEach(([k,id,ok])=>{if(!ok(v(id))){document.querySelector(`.f[data-f="${k}"]`).classList.add('err');if(!first)first=document.getElementById(id)}});
   if(first){first.focus();return false}return true}
-document.getElementById('go').addEventListener('click',()=>{if(!validate())return;
+document.getElementById('go').addEventListener('click',()=>{if(!validate())return;if(short()){const h=document.getElementById('feeHint');h.scrollIntoView({block:'center',behavior:'smooth'});h.classList.remove('shake');void h.offsetWidth;h.classList.add('shake');return}
   const has=Object.keys(cart).some(id=>['sousy','napitki'].includes(byId[id].c));
   if(!upShown&&!has){upShown=true;openUp()}else finish()});
 const up=document.getElementById('up');let upTab='sousy';
