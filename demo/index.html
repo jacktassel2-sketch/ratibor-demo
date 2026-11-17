@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/stock-hero.webp" fetchpriority="high">
 <style>
 /* Токены: угли (дымный коричневый, не чёрный), зола (светлая бумага меню), медь (огонь), зелень (как на тарелке), вино (цена, акцент) */
 :root{
@@ -364,7 +365,7 @@ body{background:var(--ash);color:var(--ink)}
 </header>
 
 <section class="hero" id="hero">
-  <div class="bg"><video id="hv" muted loop playsinline preload="auto" poster="img/stock-hero.webp" aria-hidden="true"><source src="video/hero.webm" type="video/webm"><source src="video/hero.mp4" type="video/mp4"></video></div>
+  <div class="bg"><video id="hv" muted loop playsinline preload="none" poster="img/stock-hero.webp" aria-hidden="true"><source src="video/hero-s.webm" type="video/webm" media="(max-width:760px)"><source src="video/hero-s.mp4" type="video/mp4" media="(max-width:760px)"><source src="video/hero.webm" type="video/webm"><source src="video/hero.mp4" type="video/mp4"></video></div>
   <div class="wrap">
     <h1 id="h1">Шашлык на углях в Александрове</h1>
     <p>Баранина, свинина, телятина, курица и рыба с мангала. Хачапури, супы и салаты. Доставка и самовывоз с Калининской, 1/1, оплата картой на сайте.</p>
@@ -395,7 +396,7 @@ body{background:var(--ash);color:var(--ink)}
 </section>
 
 <section class="vband" id="fish">
-  <video id="fv" muted loop playsinline preload="none" poster="img/stock-fish.webp" aria-hidden="true"><source src="video/fish.webm" type="video/webm"><source src="video/fish.mp4" type="video/mp4"></video>
+  <video id="fv" muted loop playsinline preload="none" poster="img/stock-fish.webp" aria-hidden="true"><source src="video/fish-s.webm" type="video/webm" media="(max-width:760px)"><source src="video/fish-s.mp4" type="video/mp4" media="(max-width:760px)"><source src="video/fish.webm" type="video/webm"><source src="video/fish.mp4" type="video/mp4"></video>
   <div class="wrap">
     <h2>Рыба на углях</h2>
     <p>Дорадо, сибас, сёмга, форель и стерлядь. Целиком на решётке, с лимоном и зеленью.</p>
@@ -629,7 +630,7 @@ document.getElementById('go').addEventListener('click',()=>{if(!validate())retur
   const has=Object.keys(cart).some(id=>['sousy','napitki'].includes(byId[id].c));
   if(!upShown&&!has){upShown=true;openUp()}else finish()});
 const up=document.getElementById('up');let upTab='sousy';
-function drawUp(){document.getElementById('upList').innerHTML=M.filter(x=>x.c===upTab).map(x=>`<div class="up"><div class="t"><img src="img/${x.id}.webp" alt="" loading="lazy" onerror="this.remove()"></div><div><b>${esc(x.n)}</b><span class="pr">${rub(x.p)}</span></div>${slot(x)}</div>`).join('')}
+function drawUp(){document.getElementById('upList').innerHTML=M.filter(x=>x.c===upTab).map(x=>`<div class="up"><div class="t"><img src="img/${x.id}.webp" alt="" decoding="async" onerror="this.remove()"></div><div><b>${esc(x.n)}</b><span class="pr">${rub(x.p)}</span></div>${slot(x)}</div>`).join('')}
 function openUp(){drawUp();up.classList.add('on')}function closeUp(){up.classList.remove('on')}
 document.querySelectorAll('.mtabs .tab').forEach(b=>b.addEventListener('click',()=>{upTab=b.dataset.t;document.querySelectorAll('.mtabs .tab').forEach(x=>x.classList.toggle('on',x===b));drawUp()}));
 document.getElementById('upNo').addEventListener('click',()=>{closeUp();finish()});
