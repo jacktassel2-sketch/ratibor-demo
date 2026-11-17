@@ -655,6 +655,7 @@ document.getElementById('again').addEventListener('click',()=>{cart={};done=fals
  // телефон в режиме энергосбережения не запускает видео сам: запускаем по первому касанию или прокрутке
  const kick=()=>{const vis=el=>{const r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};if(v.paused&&vis(v))v.play().catch(()=>{});const f=document.getElementById('fv');if(f&&f.paused&&vis(f)){f.preload='auto';f.play().catch(()=>{})}};
  ['touchstart','scroll','click'].forEach(t=>addEventListener(t,kick,{passive:true}));
+ ['loadedmetadata','canplay'].forEach(t=>v.addEventListener(t,()=>{if(v.paused)v.play().catch(()=>{})}));document.addEventListener('visibilitychange',()=>{if(!document.hidden)kick()});addEventListener('pageshow',kick);setTimeout(kick,800);setTimeout(kick,2500);
  requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById('hero').classList.add('in')));
  // рыба: грузим и играем, только когда видно
  const fv=document.getElementById('fv');fv.muted=true;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fv.preload='auto';fv.play().catch(()=>{})}else fv.pause()}),{threshold:.25}).observe(fv);
