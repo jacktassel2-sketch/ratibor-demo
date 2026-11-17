@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ратибор: шашлык на углях в Александрове</title>
+<meta name="description" content="Кафе «Ратибор», Александров, Калининская, 1/1. Шашлык на углях с доставкой и самовывозом, оплата картой онлайн, бронь стола.">
+<meta name="theme-color" content="#1e1c1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kraft:#e7dcc8; --kraft2:#dccfb6; --paper:#f6f1e7; --ink:#231f1b; --ink2:#5b5146; --mute:#8a7d6e; --line:#cbbca2;
+  --coal:#1e1c1a; --coal2:#2a2724; --ash:#bdb3a6; --ember:#e8590c; --ember-d:#c2470a; --herb:#3f6b3a;
+  --disp:Unbounded, "Arial Black", sans-serif; --body:Onest, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--kraft);color:var(--ink);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ember);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.hide{display:none!important}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:14px;border:0;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;transition:background .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-ember{background:var(--ember);color:#fff}
+.btn-ember:hover{background:var(--ember-d)}
+.btn-line{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-line:hover{border-color:#fff}
+.wide{width:100%}
+
+/* demo bar + header */
+.demo{background:var(--coal);color:var(--ash);font-size:12.5px;text-align:center;padding:6px 12px}
+.top{position:sticky;top:0;z-index:40;background:var(--coal);color:#fff;border-bottom:1px solid #000}
+.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.logo{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:.01em;text-decoration:none}
+.top nav{display:flex;gap:20px;margin-left:12px}
+.top nav a{text-decoration:none;color:var(--ash);font-weight:600;font-size:14.5px}
+.top nav a:hover{color:#fff}
+.sp{flex:1}
+.open{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ash);white-space:nowrap}
+.open i{width:8px;height:8px;border-radius:50%;background:#5fbf5a}
+.open.off i{background:#8a8580}
+.tel{font-weight:700;text-decoration:none;white-space:nowrap}
+.cartb{display:inline-flex;align-items:center;gap:10px;background:var(--ember);color:#fff;border:0;border-radius:12px;min-height:44px;padding:0 16px;font-weight:700;cursor:pointer}
+.cartb b{font-variant-numeric:tabular-nums}
+.cartb.bump{animation:bump .35s}
+@keyframes bump{40%{transform:scale(1.12)}}
+@media (max-width:960px){.top nav,.top .tel{display:none}}
+@media (max-width:520px){.open{display:none}}
+
+/* hero */
+.hero{position:relative;background:var(--coal);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,28,26,.95) 0%,rgba(30,28,26,.6) 50%,rgba(30,28,26,.15)),linear-gradient(0deg,var(--coal) 0%,transparent 40%)}
+.hero-in{position:relative;padding:72px 0 36px}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:clamp(38px,7.4vw,92px);line-height:.98;letter-spacing:-.02em;margin:0;max-width:11ch;opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) .1s forwards}
+.hero p{font-size:clamp(17px,2vw,20px);color:#e3d9cc;max-width:520px;margin:22px 0 28px;opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) .25s forwards}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) .4s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.hits{margin-top:56px}
+.hits h2{font-size:15px;font-weight:600;color:var(--ash);margin:0 0 12px}
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:#4a443e transparent}
+.hit{flex:0 0 220px;scroll-snap-align:start;background:var(--coal2);border-radius:16px;overflow:hidden;cursor:pointer;position:relative;text-align:left;border:0;padding:0;color:#fff}
+.hit img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.hit .t{padding:10px 12px 12px;display:flex;justify-content:space-between;align-items:flex-end;gap:8px}
+.hit b{font-size:14.5px;line-height:1.25;font-weight:600}
+.hit s{text-decoration:none;font-weight:700;white-space:nowrap}
+
+/* sections */
+.sec{padding:72px 0}
+.h2{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4.4vw,48px);line-height:1.05;letter-spacing:-.015em;margin:0 0 12px}
+.lead{color:var(--ink2);max-width:600px;margin:0 0 28px;font-size:17px}
+
+/* company sets */
+.sets{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.set{background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;border:0;padding:0;text-align:left}
+.set:first-child{grid-row:span 2}
+.set .ph{position:relative;aspect-ratio:16/10;overflow:hidden}
+.set:first-child .ph{aspect-ratio:auto;flex:1;min-height:320px}
+.set .ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ppl{position:absolute;left:12px;top:12px;background:var(--coal);color:#fff;border-radius:10px;padding:5px 10px;font-size:13px;font-weight:600}
+.set .bd{padding:16px 18px 18px}
+.set h3{font-family:var(--disp);font-weight:700;font-size:20px;margin:0 0 6px;letter-spacing:-.01em}
+.set p{margin:0 0 12px;color:var(--ink2);font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.set .row{display:flex;justify-content:space-between;align-items:center}
+.pr{font-weight:700;font-size:18px;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:900px){.sets{grid-template-columns:1fr 1fr}.set:first-child{grid-column:1/-1;grid-row:auto}.set:first-child .ph{min-height:0;aspect-ratio:16/9}}
+@media (max-width:560px){.sets{grid-template-columns:1fr}}
+
+/* menu */
+.menu{background:var(--paper)}
+.cats{position:sticky;top:62px;z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
+.cats .rail{padding:10px 0;gap:8px;scrollbar-width:none}
+.cats .rail::-webkit-scrollbar{display:none}
+.cat{flex:none;display:flex;align-items:center;gap:9px;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:5px 14px 5px 5px;cursor:pointer;font-weight:600;font-size:14.5px;min-height:48px;white-space:nowrap}
+.cat img{width:38px;height:38px;border-radius:10px;object-fit:cover}
+.cat.on{background:var(--coal);border-color:var(--coal);color:#fff}
+.mhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding:34px 0 20px}
+.mhead h2{margin:0}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:0 14px;width:min(360px,100%)}
+.search input{border:0;outline:0;background:transparent;padding:13px 0;width:100%}
+.search svg{flex:none;color:var(--mute)}
+.ctitle{display:flex;align-items:baseline;gap:12px;margin:0 0 16px}
+.ctitle h3{font-family:var(--disp);font-weight:700;font-size:24px;margin:0;letter-spacing:-.01em}
+.ctitle span{color:var(--mute);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:1060px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+.card{background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;border:1px solid #e7dfd0;transition:box-shadow .2s}
+.card:hover{box-shadow:0 8px 24px rgba(35,31,27,.12)}
+.card .ph{aspect-ratio:1/1;background:#efe8db;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card.pack .ph{background:#fff}
+.card.pack .ph img{object-fit:contain;padding:14px}
+.card .bd{padding:11px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h4{margin:0;font-size:15px;line-height:1.3;font-weight:600}
+.card .w{color:var(--mute);font-size:13px}
+.card .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:8px}
+.add{border:0;background:var(--kraft);color:var(--ink);border-radius:12px;min-height:40px;min-width:40px;padding:0 14px;font-weight:700;cursor:pointer;font-size:15px}
+.add:hover{background:var(--ember);color:#fff}
+.qty{display:inline-flex;align-items:center;background:var(--ember);color:#fff;border-radius:12px;min-height:40px}
+.qty button{border:0;background:transparent;color:#fff;width:36px;height:40px;font-size:19px;font-weight:700;cursor:pointer}
+.qty span{min-width:16px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.none{padding:30px 0;color:var(--ink2)}
+@media (max-width:420px){.card .row{flex-wrap:wrap}.card .pr{font-size:16px}}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.about img{border-radius:20px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin:22px 0 0;padding:0;list-style:none}
+.facts b{display:block;font-family:var(--disp);font-weight:700;font-size:18px}
+.facts span{color:var(--ink2);font-size:14.5px}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* booking */
+.book{background:var(--coal);color:#fff}
+.book .lead{color:var(--ash)}
+.bform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:10px;align-items:end}
+.bform label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--ash);font-weight:600;min-width:0}
+.bform input,.bform select{background:var(--coal2);border:1.5px solid #3b3631;border-radius:12px;padding:0 13px;min-height:52px;color:#fff;width:100%}
+@media (max-width:900px){.bform{grid-template-columns:1fr 1fr}.bform .btn{grid-column:1/-1}}
+.ok{margin-top:14px;color:#9bd897;font-weight:600}
+
+/* info */
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info div{background:var(--paper);border-radius:18px;padding:20px}
+.info h3{font-family:var(--disp);font-weight:700;font-size:17px;margin:0 0 8px}
+.info p{margin:3px 0;color:var(--ink2)}
+@media (max-width:860px){.info{grid-template-columns:1fr}}
+.small{font-size:13.5px;color:var(--mute)}
+footer{background:var(--coal);color:var(--ash);padding:34px 0 110px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .logo{color:#fff}
+
+/* mobile cart bar */
+.bar{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:45;display:none}
+.bar button{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--ember);color:#fff;border:0;border-radius:16px;padding:0 20px;min-height:58px;font-weight:700;font-size:16px;box-shadow:0 12px 30px rgba(194,71,10,.4);cursor:pointer}
+@media (max-width:760px){.bar.on{display:block}}
+
+/* overlay, sheet, drawer */
+.ov{position:fixed;inset:0;background:rgba(20,18,16,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s}
+.ov.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:62;left:50%;bottom:0;width:min(560px,100%);max-height:92vh;background:var(--paper);border-radius:22px 22px 0 0;transform:translate(-50%,100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;overflow:hidden}
+.sheet.on{transform:translate(-50%,0)}
+@media (min-width:760px){.sheet{bottom:auto;top:50%;border-radius:22px;transform:translate(-50%,-40%);opacity:0;pointer-events:none;transition:transform .3s,opacity .2s}.sheet.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}}
+.sheet .sc{overflow-y:auto}
+.sheet .big{aspect-ratio:4/3;background:#efe8db;position:relative}
+.sheet .big img{width:100%;height:100%;object-fit:cover}
+.sheet .big.pack{background:#fff}.sheet .big.pack img{object-fit:contain;padding:24px}
+.xb{position:absolute;right:12px;top:12px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(30,28,26,.75);color:#fff;font-size:22px;cursor:pointer;z-index:2}
+.sheet .bd{padding:18px 20px 6px}
+.sheet h3{font-family:var(--disp);font-weight:700;font-size:24px;margin:0 0 6px;letter-spacing:-.01em;line-height:1.15}
+.sheet .d{color:var(--ink2);margin:0}
+.with{padding:14px 20px 4px}
+.with h4{margin:0 0 10px;font-size:15px}
+.sf{display:flex;gap:10px;align-items:center;padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid #e3d9c7;background:var(--paper)}
+.sf .qty{min-height:52px}.sf .qty button{height:52px;width:42px}
+
+.mini{flex:0 0 140px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e7dfd0;display:flex;flex-direction:column}
+.mini .ph{aspect-ratio:1/1;background:#efe8db}
+.mini .ph img{width:100%;height:100%;object-fit:cover}
+.mini.pack .ph{background:#fff}.mini.pack .ph img{object-fit:contain;padding:10px}
+.mini .bd{padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px;flex:1}
+.mini b{font-size:13.5px;font-weight:600;line-height:1.25}
+.mini .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;gap:6px}
+.mini .pr{font-size:15px}
+.mini .add,.mini .qty{min-height:34px}.mini .qty button{height:34px;width:28px;font-size:17px}.mini .add{min-width:34px;padding:0 10px}
+
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,100%);background:var(--paper);z-index:61;transform:translateX(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dh{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #e3d9c7}
+.dh h3{margin:0;font-family:var(--disp);font-weight:700;font-size:22px}
+.dh .xb{position:static;background:var(--kraft);color:var(--ink)}
+.db{flex:1;overflow-y:auto;padding:6px 18px 20px}
+.li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #eae2d4}
+.li img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:#fff}
+.li.pack img{object-fit:contain;padding:4px}
+.li b{display:block;font-size:14.5px;font-weight:600;line-height:1.25}
+.li span.s{color:var(--mute);font-size:13px}
+.li .qty{min-height:36px}.li .qty button{height:36px;width:32px}
+.blk{margin-top:22px}
+.blk>h4{margin:0 0 10px;font-size:16px;font-family:var(--disp);font-weight:700}
+.tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--line);background:transparent;border-radius:10px;padding:0 12px;min-height:36px;font-weight:600;cursor:pointer;font-size:14px}
+.tabs button.on{background:var(--coal);color:#fff;border-color:var(--coal)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--kraft);border-radius:14px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:11px;min-height:44px;font-weight:600;cursor:pointer}
+.seg button.on{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.f{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.f label{font-size:13.5px;font-weight:600;color:var(--ink2)}
+.f input,.f textarea{border:1.5px solid #d9cdb7;background:#fff;border-radius:12px;padding:12px 13px;min-height:48px;outline:0;width:100%}
+.f input:focus,.f textarea:focus{border-color:var(--ink)}
+.f .e{display:none;color:#c0261b;font-size:13px;font-weight:600}
+.f.err input{border-color:#c0261b;background:#fff6f5}
+.f.err .e{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pay{display:grid;gap:8px}
+.po{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;background:#fff;border:1.5px solid #d9cdb7;border-radius:14px;padding:14px;cursor:pointer;text-align:left}
+.po i{width:22px;height:22px;border-radius:50%;border:2px solid #b8aa92;position:relative}
+.po.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.po.on i{border-color:var(--ember)}
+.po.on i:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ember)}
+.po b{display:block;font-weight:600}
+.po small{color:var(--mute);font-size:13px}
+.po em{font-style:normal;font-size:12px;font-weight:700;color:var(--herb);background:#e4eedf;border-radius:8px;padding:3px 8px;white-space:nowrap}
+.df{border-top:1px solid #e3d9c7;padding:12px 18px calc(14px + env(safe-area-inset-bottom));background:var(--paper)}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;font-weight:700;font-size:18px}
+.tot small{display:block;font-size:13px;color:var(--mute);font-weight:500}
+.empty{padding:40px 0;text-align:center;color:var(--ink2)}
+.done{padding:30px 0}
+.done h3{font-family:var(--disp);font-weight:700;font-size:24px;margin:0 0 10px}
+.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,16px);background:var(--coal);color:#fff;padding:11px 18px;border-radius:12px;font-weight:600;font-size:14px;z-index:80;opacity:0;transition:.25s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.hero h1,.hero p,.hero .acts{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demo">Демо нового сайта. Меню и цены с ratibor.pro на 17.11.2026. Заказы и брони в демо никуда не уходят.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" class="logo">Ратибор</a>
+    <nav aria-label="Разделы">
+      <a href="#menu">Меню</a>
+      <a href="#sets">На компанию</a>
+      <a href="#book">Бронь стола</a>
+      <a href="#info">Контакты</a>
+    </nav>
+    <span class="sp"></span>
+    <span class="open" id="open"><i></i><span id="openT">Открыто</span></span>
+    <a class="tel" href="tel:+79302220032">+7 930 222-00-32</a>
+    <button class="cartb" id="cartBtn" aria-label="Открыть корзину"><span>Корзина</span><b id="cartSum">0 ₽</b></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"><img src="../demo/img/stock-hero.webp" alt="" fetchpriority="high"></div>
+  <div class="wrap hero-in">
+    <h1>Шашлык с&nbsp;углей к&nbsp;вашему столу</h1>
+    <p>Кафе «Ратибор» в Александрове. Доставим горячим или приготовим к самовывозу. Оплата картой на сайте.</p>
+    <div class="acts">
+      <a href="#menu" class="btn btn-ember">Выбрать блюда</a>
+      <a href="#book" class="btn btn-line">Забронировать стол</a>
+    </div>
+    <div class="hits">
+      <h2>Чаще всего заказывают</h2>
+      <div class="rail" id="hits"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sets">
+  <div class="wrap">
+    <h2 class="h2">Ассорти на компанию</h2>
+    <p class="lead">Несколько видов мяса на одном блюде, с картошкой и грибами на углях. Число гостей посчитали по весу сета.</p>
+    <div class="sets" id="setList"></div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="cats"><div class="wrap"><div class="rail" id="cats" role="tablist" aria-label="Разделы меню"></div></div></div>
+  <div class="wrap" style="padding-bottom:72px">
+    <div class="mhead">
+      <h2 class="h2">Меню</h2>
+      <label class="search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Найти: люля, хачапури, харчо" aria-label="Поиск по меню"></label>
+    </div>
+    <div id="menuOut"></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap about">
+    <img src="../demo/img/stock-fish.webp" alt="Рыба на решётке над углями" loading="lazy">
+    <div>
+      <h2 class="h2">Кафе на Калининской</h2>
+      <p class="lead">Кавказская и европейская кухня, всё мясо и рыбу жарим на углях. Можно прийти в зал, заказать домой или забрать по дороге.</p>
+      <ul class="facts">
+        <li><b>103 блюда</b><span>в 14 разделах меню</span></li>
+        <li><b>31 позиция</b><span>с мангала: мясо, рыба, овощи</span></li>
+        <li><b>Банкетный зал</b><span>для праздников и юбилеев</span></li>
+        <li><b>Летняя терраса</b><span>в тёплое время года</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="wrap">
+    <h2 class="h2">Забронировать стол</h2>
+    <p class="lead">Оставьте заявку, администратор перезвонит и подтвердит. Или позвоните: <a href="tel:+79302220032" style="color:#fff;font-weight:700">+7 930 222-00-32</a></p>
+    <form class="bform" id="bookF" novalidate>
+      <label>Дата<input type="date" id="bd"></label>
+      <label>Время<select id="bt"></select></label>
+      <label>Гостей<select id="bg"><option>2</option><option>3</option><option>4</option><option>5–6</option><option>7–10</option><option>Больше 10, банкет</option></select></label>
+      <label>Телефон<input type="tel" id="bp" inputmode="tel" placeholder="+7 900 000-00-00"></label>
+      <button class="btn btn-ember" type="submit">Отправить заявку</button>
+    </form>
+    <div class="ok hide" id="bookOk">Заявка готова. В рабочей версии она придёт администратору, и он перезвонит.</div>
+  </div>
+</section>
+
+<section class="sec" id="info">
+  <div class="wrap">
+    <h2 class="h2">Адрес и часы</h2>
+    <div class="info" style="margin-top:24px">
+      <div><h3>Адрес</h3><p>Александров, Калининская ул., 1/1</p><p><a href="https://yandex.ru/maps/org/kafe_ratibor/1367692415" target="_blank" rel="noopener">Открыть на Яндекс Картах</a></p></div>
+      <div><h3>Часы работы</h3><p>Пн–Пт и Вс: 11:00–23:00</p><p>Сб: 11:00–00:00</p></div>
+      <div><h3>Телефоны</h3><p><a href="tel:+79302220032">+7 930 222-00-32</a></p><p><a href="tel:+74924423715">+7 (49244) 2-37-15</a></p></div>
+    </div>
+    <p class="small" style="margin-top:14px">Доставка по Александрову и ближайшим районам. Стоимость, зону и минимальную сумму заказа уточним у кафе и укажем здесь.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a href="#" class="logo">Ратибор</a><p>Шашлык на углях, Александров</p></div>
+    <div><p>Калининская ул., 1/1<br><a href="tel:+79302220032">+7 930 222-00-32</a></p></div>
+    <div><p>Фото части блюд временные, с Pexels.<br>Демо: AISLOTT</p></div>
+  </div>
+</footer>
+
+<div class="bar" id="bar"><button id="barBtn"><span id="barN">Корзина</span><span id="barS">0 ₽</span></button></div>
+
+<div class="ov" id="ov"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
+  <div class="sc">
+    <div class="big" id="shPh"><button class="xb" id="shX" aria-label="Закрыть">×</button><img id="shImg" alt=""></div>
+    <div class="bd"><h3 id="shT"></h3><p class="d" id="shD"></p></div>
+    <div class="with"><h4>С этим заказывают</h4><div class="rail" id="shWith"></div></div>
+  </div>
+  <div class="sf"><span id="shQ"></span><button class="btn btn-ember" style="flex:1" id="shAdd"></button></div>
+</div>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">
+  <div class="dh"><h3 id="dT">Ваш заказ</h3><button class="xb" id="dX" aria-label="Закрыть">×</button></div>
+  <div class="db">
+    <div class="empty" id="empty">Корзина пустая.<br><a href="#menu" id="toMenu">Перейти к меню</a></div>
+    <div id="order">
+      <div id="lines"></div>
+
+      <div class="blk">
+        <h4>Добавить к заказу</h4>
+        <div class="tabs" id="upTabs"><button class="on" data-t="sous">Соусы</button><button data-t="bread">Лаваш и лепёшка</button><button data-t="drink">Напитки</button></div>
+        <div class="rail" id="upList"></div>
+      </div>
+
+      <div class="blk">
+        <h4>Оплата</h4>
+        <div class="pay" id="pay">
+          <button type="button" class="po on" data-p="card"><i></i><span><b>Картой онлайн</b><small>Мир, Visa, Mastercard, СБП</small></span><em>сразу</em></button>
+          <button type="button" class="po" data-p="cardc"><i></i><span><b>Картой курьеру</b><small>или на кассе при самовывозе</small></span></button>
+          <button type="button" class="po" data-p="cash"><i></i><span><b>Наличными</b><small>при получении</small></span></button>
+        </div>
+      </div>
+
+      <div class="blk">
+        <h4>Как получить</h4>
+        <div class="seg" id="mode"><button type="button" class="on" data-m="del">Доставка</button><button type="button" data-m="pick">Самовывоз</button></div>
+        <p class="small hide" id="pickInfo" style="margin:10px 0 0">Самовывоз: Калининская ул., 1/1. Администратор позвонит, когда заказ будет готов.</p>
+        <div class="two">
+          <div class="f" data-f="name"><label for="cName">Имя</label><input id="cName" autocomplete="name"><span class="e">Укажите имя</span></div>
+          <div class="f" data-f="phone"><label for="cPhone">Телефон</label><input id="cPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7"><span class="e">Нужно 11 цифр</span></div>
+        </div>
+        <div id="addr">
+          <div class="seg" style="margin-top:12px" id="ht"><button type="button" class="on" data-h="flat">Квартира</button><button type="button" data-h="house">Частный дом</button></div>
+          <div class="two">
+            <div class="f" data-f="street"><label for="aStreet">Улица</label><input id="aStreet" autocomplete="address-line1"><span class="e">Укажите улицу</span></div>
+            <div class="f" data-f="house"><label for="aHouse">Дом</label><input id="aHouse"><span class="e">Укажите дом</span></div>
+          </div>
+          <div class="two flat">
+            <div class="f" data-f="entr"><label for="aEntr">Подъезд</label><input id="aEntr" inputmode="numeric"><span class="e">Укажите подъезд</span></div>
+            <div class="f" data-f="apt"><label for="aApt">Квартира</label><input id="aApt" inputmode="numeric"><span class="e">Укажите квартиру</span></div>
+          </div>
+          <div class="f"><label for="aCity">Город или посёлок</label><input id="aCity" value="Александров"></div>
+        </div>
+        <div class="f"><label for="cCom">Комментарий</label><textarea id="cCom" rows="2" placeholder="Например: к 19:00, без лука"></textarea></div>
+      </div>
+    </div>
+    <div class="done hide" id="done">
+      <h3 id="doneH">Заказ оплачен</h3>
+      <p id="doneT"></p>
+      <p class="small">Это демо: оплата и заказ никуда не ушли. В рабочей версии здесь откроется платёжная страница банка, а заказ придёт в кафе.</p>
+      <button class="btn btn-ember wide" id="again" style="margin-top:10px">Вернуться к меню</button>
+    </div>
+  </div>
+  <div class="df" id="df">
+    <div class="tot"><span>Итого<small id="totNote">без учёта доставки</small></span><span id="tot">0 ₽</span></div>
+    <button class="btn btn-ember wide" id="go">Оплатить картой</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="../demo/menu.js"></script>
+<script>
+(function(){
+const CATS=[["shash","Шашлык",null],["assorti","Ассорти",169],["baranina","Баранина",246],["svinina","Свинина",257],["telyatina","Телятина",254],["kurica","Курица",264],["ryba","Рыба",272],["garniry","Гарниры",275],["salaty","Салаты",297],["zakuski","Закуски",286],["goryachee","Горячее",12560],["supy","Супы",1113],["vypechka","Хачапури",9233],["sousy","Соусы и хлеб",2248],["napitki","Напитки",7187]];
+const SHASH=["baranina","svinina","telyatina","kurica","ryba"];
+const M=window.MENU,by={};M.forEach(x=>by[x.id]=x);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const rub=n=>n.toLocaleString('ru-RU')+' ₽';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const isPack=x=>(x.c==='napitki'&&x.id!==2099)||x.id===7995;
+const src=x=>`../demo/img/${x.id}.webp`;
+const wt=x=>{const m=(x.d||'').match(/(\d[\d\s]*)\s*г\b/);return m?m[1].replace(/\s/g,'')+' г':((x.d||'').match(/\d+\s*шт\./)||[''])[0]};
+const short=x=>{const d=x.d||'';return /^\d/.test(d)?'':d.replace(/\.?\s*\d[\d\s]*\s*г\.?$/,'')};
+let cart={};try{cart=JSON.parse(localStorage.getItem('ratibor-cart2')||'{}')}catch(e){}
+Object.keys(cart).forEach(k=>{if(!by[k])delete cart[k]});
+const save=()=>{try{localStorage.setItem('ratibor-cart2',JSON.stringify(cart))}catch(e){}};
+const ctl=id=>{const q=cart[id]||0;return q?`<span class="qty"><button data-a="-" data-id="${id}" aria-label="Убрать одну">−</button><span>${q}</span><button data-a="+" data-id="${id}" aria-label="Добавить ещё">+</button></span>`:`<button class="add" data-a="+" data-id="${id}" aria-label="Добавить: ${esc(by[id].n)}">+</button>`};
+const card=x=>`<article class="card${isPack(x)?' pack':''}" data-open="${x.id}"><div class="ph"><img src="${src(x)}" alt="${esc(x.n)}" loading="lazy"></div><div class="bd"><h4>${esc(x.n)}</h4>${wt(x)?`<span class="w">${wt(x)}</span>`:''}<div class="row"><span class="pr">${rub(x.p)}</span><span data-c="${x.id}">${ctl(x.id)}</span></div></div></article>`;
+const mini=x=>`<div class="mini${isPack(x)?' pack':''}"><div class="ph"><img src="${src(x)}" alt="${esc(x.n)}" loading="lazy"></div><div class="bd"><b>${esc(x.n)}</b><div class="row"><span class="pr">${rub(x.p)}</span><span data-c="${x.id}">${ctl(x.id)}</span></div></div></div>`;
+
+// hits
+const HITS=[246,252,257,255,263,272,9233,297];
+$('#hits').innerHTML=HITS.map(id=>{const x=by[id];return `<button class="hit" data-open="${id}"><img src="${src(x)}" alt="" loading="lazy"><span class="t"><b>${esc(x.n)}</b><s>${rub(x.p)}</s></span></button>`}).join('');
+
+// sets
+const SETS=[169,239,241,240,171,242];
+$('#setList').innerHTML=SETS.map(id=>{const x=by[id];const g=+(x.d.match(/(\d+)\s*г\s*$/)||[0,0])[1];const n=g?Math.max(2,Math.round(g/350)):0;
+ return `<article class="set" data-open="${id}"><div class="ph"><img src="${src(x)}" alt="${esc(x.n)}" loading="lazy">${n?`<span class="ppl">на ${n}–${n+1} человек</span>`:''}</div><div class="bd"><h3>${esc(x.n)}</h3><p>${esc(x.d)}</p><div class="row"><span class="pr">${rub(x.p)}</span><span data-c="${id}">${ctl(id)}</span></div></div></article>`}).join('');
+
+// categories
+let curCat='shash';
+const catImg=c=>c[2]?src(by[c[2]]):src(by[263]);
+$('#cats').innerHTML=CATS.map(c=>`<button class="cat${c[0]===curCat?' on':''}" role="tab" data-k="${c[0]}"><img src="${catImg(c)}" alt="">${c[1]}</button>`).join('');
+const cnt=n=>n+' '+(n%10===1&&n%100!==11?'блюдо':(n%10>=2&&n%10<=4&&(n%100<10||n%100>20)?'блюда':'блюд'));
+function drawMenu(){
+  const q=$('#q').value.trim().toLowerCase();
+  if(q){const xs=M.filter(x=>(x.n+' '+(x.d||'')).toLowerCase().includes(q));
+    $('#menuOut').innerHTML=xs.length?`<div class="ctitle"><h3>Найдено</h3><span>${cnt(xs.length)}</span></div><div class="grid">${xs.map(card).join('')}</div>`:`<p class="none">Ничего не нашлось. Попробуйте другое слово или позвоните: <a href="tel:+79302220032">+7 930 222-00-32</a>.</p>`;return}
+  if(curCat==='shash'){$('#menuOut').innerHTML=SHASH.map(k=>{const c=CATS.find(z=>z[0]===k);const xs=M.filter(x=>x.c===k);return `<div class="ctitle" style="margin-top:6px"><h3>${c[1]}</h3><span>${cnt(xs.length)}</span></div><div class="grid" style="margin-bottom:34px">${xs.map(card).join('')}</div>`}).join('');return}
+  const c=CATS.find(z=>z[0]===curCat),xs=M.filter(x=>x.c===curCat);
+  $('#menuOut').innerHTML=`<div class="ctitle"><h3>${c[1]}</h3><span>${cnt(xs.length)}</span></div><div class="grid">${xs.map(card).join('')}</div>`;
+}
+$('#cats').addEventListener('click',e=>{const b=e.target.closest('.cat');if(!b)return;curCat=b.dataset.k;$('#q').value='';$$('.cat').forEach(z=>z.classList.toggle('on',z===b));b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});drawMenu();
+  const top=$('#menu').getBoundingClientRect().top+scrollY-62;if(scrollY>top)scrollTo({top,behavior:'smooth'})});
+$('#q').addEventListener('input',drawMenu);
+drawMenu();
+
+// cart
+const total=()=>Object.entries(cart).reduce((a,[id,q])=>a+by[id].p*q,0);
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+let tT;function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(tT);tT=setTimeout(()=>el.classList.remove('on'),1500)}
+function refresh(){
+  $$('[data-c]').forEach(el=>el.innerHTML=ctl(el.dataset.c));
+  const n=count(),s=total();
+  $('#cartSum').textContent=rub(s);$('#barN').textContent='Корзина, '+n+' шт.';$('#barS').textContent=rub(s);
+  $('#bar').classList.toggle('on',n>0&&!$('#drawer').classList.contains('on')&&!$('#sheet').classList.contains('on'));
+  drawLines();drawSheetBtn();save();
+}
+function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];if(d>0){toast('В корзине: '+by[id].n);const b=$('#cartBtn');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}refresh()}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-a]');if(a){e.stopPropagation();change(+a.dataset.id,a.dataset.a==='+'?1:-1);return}
+  const o=e.target.closest('[data-open]');if(o)openSheet(+o.dataset.open);
+});
+
+// item sheet
+const ov=$('#ov');let shId=null;
+const WITH={sous:[2248,2245,2251,7995],bread:[6992,2273],drink:[7187,7190,2062,8066,2109]};
+function withFor(x){if(['sousy','napitki'].includes(x.c))return [...WITH.sous,...WITH.bread].filter(i=>i!==x.id).slice(0,5);
+  if(['supy','salaty','zakuski','goryachee','vypechka'].includes(x.c))return [2273,7187,2062,8066,2109];
+  return [2248,2245,6992,275,7187,8066];}
+function openSheet(id){shId=id;const x=by[id];
+  $('#shPh').classList.toggle('pack',isPack(x));$('#shImg').src=src(x);$('#shImg').alt=x.n;
+  $('#shT').textContent=x.n;$('#shD').textContent=x.d||'';
+  $('#shWith').innerHTML=withFor(x).map(i=>mini(by[i])).join('');
+  drawSheetBtn();$('#sheet').classList.add('on');ov.classList.add('on');$('#bar').classList.remove('on');document.body.style.overflow='hidden'}
+function drawSheetBtn(){if(shId==null)return;const x=by[shId],q=cart[shId]||0;
+  $('#shQ').innerHTML=q?ctl(shId):'';$('#shAdd').textContent=q?'Готово':('Добавить за '+rub(x.p))}
+$('#shAdd').addEventListener('click',()=>{if(!cart[shId])change(shId,1);else closeAll()});
+function closeAll(){$('#sheet').classList.remove('on');$('#drawer').classList.remove('on');ov.classList.remove('on');document.body.style.overflow='';shId=null;refresh()}
+$('#shX').addEventListener('click',closeAll);ov.addEventListener('click',closeAll);$('#dX').addEventListener('click',closeAll);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+// drawer
+let mode='del',ht='flat',pay='card',upT='sous',done=false;
+function openCart(){$('#sheet').classList.remove('on');$('#drawer').classList.add('on');ov.classList.add('on');$('#bar').classList.remove('on');document.body.style.overflow='hidden';drawUp()}
+$('#cartBtn').addEventListener('click',openCart);$('#barBtn').addEventListener('click',openCart);
+$('#toMenu').addEventListener('click',closeAll);
+function drawLines(){const ids=Object.keys(cart);
+  $('#empty').classList.toggle('hide',ids.length>0||done);$('#order').classList.toggle('hide',!ids.length||done);$('#df').classList.toggle('hide',!ids.length||done);$('#done').classList.toggle('hide',!done);
+  $('#lines').innerHTML=ids.map(id=>{const x=by[id];return `<div class="li${isPack(x)?' pack':''}"><img src="${src(x)}" alt=""><div><b>${esc(x.n)}</b><span class="s">${rub(x.p*cart[id])}</span></div>${ctl(id)}</div>`}).join('');
+  $('#tot').textContent=rub(total());$('#totNote').textContent=mode==='del'?'без учёта доставки':'самовывоз';
+  $('#go').textContent=(pay==='card'?'Оплатить картой ':'Оформить заказ на ')+rub(total());}
+function drawUp(){$('#upList').innerHTML=WITH[upT==='drink'?'drink':upT].concat(upT==='drink'?M.filter(x=>x.c==='napitki'&&!WITH.drink.includes(x.id)).map(x=>x.id):[]).map(i=>mini(by[i])).join('')}
+$('#upTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;upT=b.dataset.t;$$('#upTabs button').forEach(z=>z.classList.toggle('on',z===b));drawUp()});
+$('#pay').addEventListener('click',e=>{const b=e.target.closest('.po');if(!b)return;pay=b.dataset.p;$$('.po').forEach(z=>z.classList.toggle('on',z===b));drawLines()});
+$('#mode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;$$('#mode button').forEach(z=>z.classList.toggle('on',z===b));$('#addr').classList.toggle('hide',mode!=='del');$('#pickInfo').classList.toggle('hide',mode==='del');
+  $('.po[data-p=cardc] small').textContent=mode==='del'?'терминал у курьера':'на кассе в кафе';drawLines()});
+$('#ht').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ht=b.dataset.h;$$('#ht button').forEach(z=>z.classList.toggle('on',z===b));$('.flat').classList.toggle('hide',ht!=='flat')});
+const v=id=>$('#'+id).value.trim();
+function valid(){const need=[['name','cName',s=>s.length>1],['phone','cPhone',s=>s.replace(/\D/g,'').length===11]];
+  if(mode==='del'){need.push(['street','aStreet',s=>s],['house','aHouse',s=>s]);if(ht==='flat')need.push(['entr','aEntr',s=>s],['apt','aApt',s=>s])}
+  let first=null;$$('.f[data-f]').forEach(f=>f.classList.remove('err'));
+  need.forEach(([k,id,ok])=>{if(!ok(v(id))){$(`.f[data-f="${k}"]`).classList.add('err');first=first||$('#'+id)}});
+  if(first){first.scrollIntoView({block:'center',behavior:'smooth'});first.focus({preventScroll:true});return false}return true}
+$('#go').addEventListener('click',()=>{if(!valid())return;
+  const where=mode==='pick'?'Самовывоз: Калининская ул., 1/1':[v('aCity'),v('aStreet'),'д. '+v('aHouse'),ht==='flat'?'подъезд '+v('aEntr')+', кв. '+v('aApt'):''].filter(Boolean).join(', ');
+  $('#doneH').textContent=pay==='card'?'Заказ оплачен':'Заказ принят';
+  $('#doneT').innerHTML=`${esc(v('cName'))}, ${esc(v('cPhone'))}<br>${esc(where)}<br>Сумма: <b>${rub(total())}</b>`;
+  done=true;drawLines()});
+$('#again').addEventListener('click',()=>{cart={};done=false;closeAll();refresh()});
+
+// open status, Moscow time; hours from jsprav
+(function(){const n=new Date(Date.now()+(new Date().getTimezoneOffset()+180)*6e4),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,c=d===6?24:23,o=h>=11&&h<c;
+ $('#open').classList.toggle('off',!o);$('#openT').textContent=o?'Открыто до '+(c===24?'00:00':'23:00'):'Откроемся в 11:00'})();
+
+// booking
+(function(){const t=$('#bt');for(let h=11;h<=22;h++)['00','30'].forEach(m=>t.add(new Option(h+':'+m)));t.value='19:00';
+ const d=$('#bd');d.min=new Date().toISOString().slice(0,10);d.value=d.min;
+ $('#bookF').addEventListener('submit',e=>{e.preventDefault();const p=$('#bp');if(p.value.replace(/\D/g,'').length!==11){p.focus();p.style.borderColor='#e5534b';return}p.style.borderColor='';$('#bookOk').classList.remove('hide')})})();
+
+refresh();
+})();
+</script>
+</body>
+</html>
