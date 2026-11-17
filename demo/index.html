@@ -377,7 +377,7 @@ body{background:var(--ash);color:var(--ink)}
       <a href="#menu" class="btn btn-copper">Собрать заказ</a>
       <a href="#book" class="btn btn-line">Забронировать стол</a>
     </div>
-    <div class="meta"><span>Сегодня: <b id="today">11:00–23:00</b></span><span>Телефон: <b><a href="tel:+79302220032" style="text-decoration:none">+7 930 222-00-32</a></b></span></div>
+    <div class="meta"><span>Доставка: <b>бесплатно от 1 000 ₽</b></span><span>Сегодня: <b id="today">11:00–23:00</b></span><span>Телефон: <b><a href="tel:+79302220032" style="text-decoration:none">+7 930 222-00-32</a></b></span></div>
   </div>
 </section>
 
@@ -474,7 +474,7 @@ body{background:var(--ash);color:var(--ink)}
       <div><h4>Часы работы</h4><p>Пн–Пт и Вс 11:00–23:00</p><p>Сб 11:00–00:00</p></div>
       <div><h4>Телефоны</h4><p><a href="tel:+79302220032" style="text-decoration:none">+7 930 222-00-32</a></p><p><a href="tel:+74924423715" style="text-decoration:none">+7 (49244) 2-37-15</a></p></div>
     </div>
-    <p class="note" style="color:#a8988a;margin-top:28px">Доставка по Александрову бесплатно от 1 000 ₽ (меньше — 200 ₽). В Балакирево, Струнино и Карабаново бесплатно, заказ от 3 500 ₽. Самовывоз с Калининской, 1/1.</p>
+    <p class="note" style="color:#a8988a;margin-top:28px">Бесплатная доставка по Александрову при заказе от 1 000 ₽. В Балакирево, Струнино и Карабаново бесплатно при заказе от 3 500 ₽. Самовывоз с Калининской, 1/1.</p>
   </div>
 </section>
 
@@ -617,15 +617,15 @@ document.getElementById('closeCart').addEventListener('click',closeD);ov.addEven
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeUp();closeD()}});
 let mode='delivery',ht='flat',pay='card',done=false,upShown=false;
 const PAYN={card:'Картой онлайн','courier-card':'Картой при получении',cash:'Наличными при получении'};
-// доставка: Александров бесплатно от 1 000 ₽ (меньше — 200 ₽); Балакирево, Струнино, Карабаново бесплатно, заказ от 3 500 ₽
-const town=()=>document.getElementById('aCity').value;const MAIN='Александров',FREE_MAIN=1000,MIN_TOWN=3500,FEE_MAIN=200;
-const fee=()=>mode==='delivery'&&sum()>0&&town()===MAIN&&sum()<FREE_MAIN?FEE_MAIN:0;const total=()=>sum()+fee();
-const short=()=>mode==='delivery'&&town()!==MAIN&&sum()<MIN_TOWN?MIN_TOWN-sum():0;
+// доставка бесплатная: Александров от 1 000 ₽; Балакирево, Струнино, Карабаново от 3 500 ₽; меньше порога кафе не возит
+const town=()=>document.getElementById('aCity').value;const MAIN='Александров';const minFor=t=>t===MAIN?1000:3500;
+const fee=()=>0;const total=()=>sum();
+const short=()=>mode==='delivery'&&sum()<minFor(town())?minFor(town())-sum():0;
 function feeNote(){const n=document.getElementById('sumNote'),h=document.getElementById('feeHint');if(!n)return;
-  if(mode!=='delivery'){n.textContent='самовывоз, без доставки';if(h)h.textContent='';return}
-  const t=town(),s=sum();
-  if(t===MAIN){n.textContent=fee()?'в том числе доставка '+rub(fee()):'доставка по Александрову бесплатно';if(h){h.className='feehint'+(fee()?'':' ok');h.textContent=fee()?'Добавьте ещё '+rub(FREE_MAIN-s)+' — доставка станет бесплатной':'Доставка по Александрову бесплатно'}}
-  else{n.textContent=short()?'доставка в '+t+' от '+rub(MIN_TOWN):'доставка в '+t+' бесплатно';if(h){h.className='feehint'+(short()?' warn':' ok');h.textContent=short()?'Доставка в '+t+' — от '+rub(MIN_TOWN)+'. Добавьте ещё '+rub(short()):'Доставка в '+t+' бесплатно'}}}
+  if(mode!=='delivery'){n.textContent='самовывоз, Калининская, 1/1';if(h)h.textContent='';return}
+  const t=town(),where=t===MAIN?'по Александрову':'в '+t;
+  n.textContent=short()?'доставка '+where+' от '+rub(minFor(t)):'доставка '+where+' бесплатно';
+  if(h){h.className='feehint'+(short()?' warn':' ok');h.textContent=short()?'Доставка '+where+' — от '+rub(minFor(t))+'. Добавьте ещё '+rub(short())+' или заберите сами':'Доставка '+where+' бесплатно'}}
 function goLabel(){feeNote();const s=rub(total());document.getElementById('go').textContent=pay==='card'?'Оплатить картой, '+s:'Оформить заказ, '+s}
 function drawLines(){const ids=Object.keys(cart);document.getElementById('emptyCart').classList.toggle('hide',ids.length>0||done);
   document.getElementById('checkout').classList.toggle('hide',!ids.length||done);document.getElementById('df').classList.toggle('hide',!ids.length||done);
