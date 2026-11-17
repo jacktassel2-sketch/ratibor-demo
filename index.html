@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ратибор: было / стало</title>
+<style>
+:root{--bg:#f6f1ea;--card:#fff;--ink:#1f1a16;--mute:#6d6259;--bad:#b3261e;--good:#1f7a3f;--acc:#c4561b;--line:#e4dacd}
+@media (prefers-color-scheme:dark){:root{--bg:#16120f;--card:#211b17;--ink:#f1e9df;--mute:#a99c90;--bad:#ff8a80;--good:#7bd99a;--acc:#ff9a5c;--line:#3a3029}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 16px}
+h1{font-family:Georgia,serif;font-size:clamp(34px,6vw,56px);margin:0 0 6px;line-height:1.05}
+.sub{color:var(--mute);margin:0 0 28px}
+.cta{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px;font-size:17px}
+.cta:hover{filter:brightness(1.08)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 10px}
+.card h2{margin:0 0 4px;font-size:22px}
+.card .tag{font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.was .tag{color:var(--bad)}.now .tag{color:var(--good)}
+ul{padding-left:20px;margin:12px 0}
+li{margin:0 0 10px}
+.note{color:var(--mute);font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;color:var(--mute);font-size:14px}
+footer a{color:var(--ink)}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Кафе «Ратибор»: было / стало</h1>
+  <p class="sub">Демо нового сайта для ratibor.pro, Александров. Разбор старого сайта от 17.11.2026.</p>
+  <a class="cta" href="demo/">Открыть новый сайт →</a>
+
+  <div class="grid">
+    <section class="card was">
+      <div class="tag">Было</div>
+      <h2>ratibor.pro сейчас</h2>
+      <ul>
+        <li>Онлайн-заказ по сути не работает: на оформлении нет оплаты, доставки и контактов, в корзине «ПОДЫТОГ».</li>
+        <li>На главной нет адреса, телефона и часов работы; адреса и часов нет на сайте вообще.</li>
+        <li>Бронь стола только по телефону, ссылка ведёт на служебную <code>/sample-page/</code>.</li>
+        <li>Сайт называется «Доставка шашлыка», имя «Ратибор» почти не видно.</li>
+        <li>13 из 103 блюд без фото, ещё у 7 фото чужое или повторяется.</li>
+        <li>«Все меню (50)», а блюд 103: половину меню не видно.</li>
+        <li>Ошибки в текстах: «близлежащим районам», «Заполнитель», не те описания у комбо, разнобой «1000гр.» / «250г.».</li>
+        <li>У 40+ блюд нет описания и веса.</li>
+        <li>В подвале ссылка на чужой сайт доставки цветов.</li>
+      </ul>
+    </section>
+    <section class="card now">
+      <div class="tag">Стало</div>
+      <h2>Новый сайт</h2>
+      <ul>
+        <li>Имя «Ратибор», телефон, адрес и «Открыто до 23:00» видны сразу.</li>
+        <li>Все 103 блюда в 14 понятных разделах, липкая навигация и поиск.</li>
+        <li>Онлайн-заказ: корзина, доставка или самовывоз, адрес по полям, проверка, оплата, комментарий.</li>
+        <li>Перед оформлением «К шашлыку подойдёт»: соусы, лаваш, напитки.</li>
+        <li>Бронь стола заявкой: дата, время, гости, телефон.</li>
+        <li>Ассорти отдельным блоком «Для компании».</li>
+        <li>Тексты исправлены, посторонняя ссылка и служебные страницы убраны.</li>
+      </ul>
+      <p class="note">Условия доставки, оплата и часы работы в демо взяты из справочников; их нужно уточнить у кафе.</p>
+    </section>
+  </div>
+
+  <a class="cta" href="demo/">Открыть новый сайт →</a>
+
+  <footer>
+    <div><strong>AISLOTT</strong>: AI-автоматизация для компаний по всему миру</div>
+    <div class="links">
+      <a href="https://aislott.com">aislott.com</a>
+      <a href="https://www.youtube.com/@SLOTTAI1">YouTube @SLOTTAI1</a>
+      <a href="https://t.me/AISLOTT">Telegram t.me/AISLOTT</a>
+      <a href="https://www.instagram.com/aislott1/">Instagram aislott1</a>
+    </div>
+    <p class="note">Демо-версия. Фото блюд с сайта ratibor.pro; атмосферные фото с Pexels (см. refs.md).</p>
+  </footer>
+</div>
+</body>
+</html>
