@@ -39,7 +39,17 @@ li{margin:0 0 10px}
 .voice{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 0;padding:0;list-style:none}
 .voice li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:0}
 .voice b{display:block;margin-bottom:4px}
-@media (max-width:760px){.voice{grid-template-columns:1fr}}
+.voice.v4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.voice.v4{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.voice,.voice.v4{grid-template-columns:1fr}}
+.loss{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:6px 0 10px}
+.loss.roi{grid-template-columns:repeat(4,1fr)}
+.loss div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.loss span{display:block;color:var(--mute);font-size:13.5px;line-height:1.3;margin-bottom:6px}
+.loss b{font-size:clamp(18px,2.4vw,24px);white-space:nowrap}
+.loss .hl{border-color:var(--wine);background:#2a1513}
+.loss .hl b{color:#ff9d8f}
+@media (max-width:760px){.loss,.loss.roi{grid-template-columns:1fr 1fr}.loss .hl{grid-column:1/-1}}
 .note{color:var(--mute);font-size:14px}
 footer{padding:28px 0 40px;color:var(--mute);font-size:14px}
 footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:8px}
@@ -104,21 +114,54 @@ footer a{color:var(--ink2)}
 
 <section>
   <div class="wrap">
-    <h2>Следующий шаг: голосовой помощник</h2>
-    <p class="sub" style="margin-bottom:0">В час пик линия занята, гость не дозвонился и заказал в другом месте. Помощник берёт трубку, когда занято или никто не ответил.</p>
-    <ol class="voice">
-      <li><b>Гость звонит</b>Помощник отвечает сразу, днём и ночью.</li>
-      <li><b>Принимает заказ</b>По вашему меню и ценам, уточняет адрес.</li>
-      <li><b>Присылает вам</b>Заказ приходит в Telegram. Администратор остаётся на месте.</li>
-    </ol>
-    <p class="note">Помощник на подходе: подключим «Ратибор» одним из первых, если интересно.</p>
+    <h2>Сколько стоит один пропущенный звонок</h2>
+    <p class="sub">Гость открыл сайт, заказать не смог и звонит. Линия занята. Он заказывает в другом месте.</p>
+    <div class="loss">
+      <div><span>Средний чек</span><b>2 000 ₽</b></div>
+      <div><span>Не дозвонились за день</span><b>3 гостя</b></div>
+      <div><span>Потеряно за день</span><b>6 000 ₽</b></div>
+      <div><span>За месяц</span><b>180 000 ₽</b></div>
+      <div class="hl"><span>За год</span><b>2 160 000 ₽</b></div>
+    </div>
+    <p class="note">3 × 2 000 ₽ = 6 000 ₽ в день; × 30 дней = 180 000 ₽ в месяц; × 12 месяцев = 2 160 000 ₽ в год.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Сколько стоит</h2>
-    <p>До Нового года <b>10 000 ₽</b> вместо 20 000 ₽. Это пять заказов по 2 000 ₽: сайт окупается за 5 заказов. Правки бесплатно. Сайт работает на вашем адресе ratibor.pro, почта не меняется. Поддержка по желанию после сдачи: 2 000 ₽/мес или 1 500 ₽/мес при оплате за год.</p>
+    <h2>Голосовой помощник: телефон больше не занят</h2>
+    <p class="sub" style="margin-bottom:0">Принимает хоть 100 звонков одновременно. Берёт трубку, когда администратор занят или никто не ответил.</p>
+    <ol class="voice v4">
+      <li><b>Гость звонит</b>Помощник отвечает сразу, 24/7: днём, ночью, в выходные.</li>
+      <li><b>Принимает заказ</b>По вашему меню и ценам, уточняет адрес и время.</li>
+      <li><b>Присылает управляющему</b>Заказ приходит на почту управляющему. Администратор остаётся на месте.</li>
+      <li><b>Без больничных и выходных</b>Всегда в хорошем настроении, не устаёт. Минимум вдвое дешевле сотрудника на телефоне.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ваш программист остаётся</h2>
+    <p>Если вы много лет работаете со своим специалистом, менять его не нужно. Мы делаем только две вещи: новый сайт и голосового помощника. Интеграции, сопровождение и всё остальное может дальше вести ваш специалист: передадим ему готовый сайт и доступы.</p>
+    <ul>
+      <li><b>Сайт</b>: разовая оплата, без абонентки.</li>
+      <li><b>Голосовой помощник</b>: ежемесячная оплата, минимум вдвое дешевле сотрудника, который принимает звонки.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Копейки против потерь</h2>
+    <div class="loss roi">
+      <div><span>Новый сайт, один раз</span><b>10 000 ₽</b></div>
+      <div><span>Окупается за</span><b>5 заказов</b></div>
+      <div><span>Или за дней пропущенных звонков</span><b>меньше 2</b></div>
+      <div class="hl"><span>Потери за год больше цены сайта</span><b>в 216 раз</b></div>
+    </div>
+    <p class="note">10 000 ₽ ÷ 2 000 ₽ = 5 заказов. 10 000 ₽ ÷ 6 000 ₽ в день = 1,7 дня. 2 160 000 ₽ ÷ 10 000 ₽ = 216.</p>
+    <p>До Нового года <b>10 000 ₽</b> вместо 20 000 ₽. Делаем за один рабочий день после того, как получим ваши фото и контакты. Правки бесплатно. Сайт работает на вашем адресе ratibor.pro, почта не меняется.</p>
     <p class="note">В демо часть фото блюд и видео временные, со стоков. В рабочей версии поставим ваши.</p>
     <a class="cta" href="demo/">Открыть новый сайт</a>
   </div>
