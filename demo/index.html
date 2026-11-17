@@ -339,6 +339,7 @@ body{background:var(--ash);color:var(--ink)}
 .form input,.form select{background:#120d0b;border-color:var(--ash2);color:#fff}
 .castle .h2{text-shadow:0 2px 20px rgba(0,0,0,.6)}
 @media (prefers-reduced-motion:reduce){.cbg .glow{animation:none}}
+.seg.zone{margin-top:10px}.seg.zone button{font-size:13.5px}
 </style>
 </head>
 <body>
@@ -365,7 +366,7 @@ body{background:var(--ash);color:var(--ink)}
 </header>
 
 <section class="hero" id="hero">
-  <div class="bg"><video id="hv" muted loop playsinline preload="none" poster="img/stock-hero.webp" aria-hidden="true"><source src="video/hero-s.webm" type="video/webm" media="(max-width:760px)"><source src="video/hero-s.mp4" type="video/mp4" media="(max-width:760px)"><source src="video/hero.webm" type="video/webm"><source src="video/hero.mp4" type="video/mp4"></video></div>
+  <div class="bg"><video id="hv" autoplay muted loop playsinline preload="none" poster="img/stock-hero.webp" aria-hidden="true"><source src="video/hero-s.webm" type="video/webm" media="(max-width:760px)"><source src="video/hero-s.mp4" type="video/mp4" media="(max-width:760px)"><source src="video/hero.webm" type="video/webm"><source src="video/hero.mp4" type="video/mp4"></video></div>
   <div class="wrap">
     <h1 id="h1">Шашлык на углях в Александрове</h1>
     <p>Баранина, свинина, телятина, курица и рыба с мангала. Хачапури, супы и салаты. Доставка и самовывоз с Калининской, 1/1, оплата картой на сайте.</p>
@@ -470,7 +471,7 @@ body{background:var(--ash);color:var(--ink)}
       <div><h4>Часы работы</h4><p>Пн–Пт и Вс 11:00–23:00</p><p>Сб 11:00–00:00</p></div>
       <div><h4>Телефоны</h4><p><a href="tel:+79302220032" style="text-decoration:none">+7 930 222-00-32</a></p><p><a href="tel:+74924423715" style="text-decoration:none">+7 (49244) 2-37-15</a></p></div>
     </div>
-    <p class="note" style="color:#a8988a;margin-top:28px">Доставка по Александрову и ближайшим районам. Стоимость и время доставки появятся здесь после согласования с кафе.</p>
+    <p class="note" style="color:#a8988a;margin-top:28px">Доставка по Александрову 200 ₽, за город 500 ₽. Самовывоз с Калининской, 1/1 бесплатно.</p>
   </div>
 </section>
 
@@ -504,6 +505,7 @@ body{background:var(--ash);color:var(--ink)}
       <div id="addr">
         <div class="seg" style="margin-top:14px"><button type="button" class="on" data-ht="flat">Квартира</button><button type="button" data-ht="house">Частный дом</button></div>
         <div class="f" data-f="city"><label for="aCity">Город или посёлок</label><input id="aCity" value="Александров"><span class="e">Укажите город</span></div>
+        <div class="seg zone"><button type="button" class="on" data-zone="city">По Александрову · 200 ₽</button><button type="button" data-zone="out">За город · 500 ₽</button></div>
         <div class="two">
           <div class="f" data-f="street"><label for="aStreet">Улица</label><input id="aStreet" autocomplete="address-line1"><span class="e">Укажите улицу</span></div>
           <div class="f" data-f="house"><label for="aHouse">Дом</label><input id="aHouse"><span class="e">Укажите дом</span></div>
@@ -530,7 +532,7 @@ body{background:var(--ash);color:var(--ink)}
     </div>
   </div>
   <div class="df" id="df">
-    <div class="sum"><span>Итого<small id="sumNote">доставка рассчитывается отдельно</small></span><span id="total">0 ₽</span></div>
+    <div class="sum"><span>Итого<small id="sumNote">в том числе доставка по Александрову 200 ₽</small></span><span id="total">0 ₽</span></div>
     <button class="btn btn-copper wide" id="go">Оплатить картой</button>
   </div>
 </aside>
@@ -612,13 +614,18 @@ document.getElementById('closeCart').addEventListener('click',closeD);ov.addEven
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeUp();closeD()}});
 let mode='delivery',ht='flat',pay='card',done=false,upShown=false;
 const PAYN={card:'Картой онлайн','courier-card':'Картой при получении',cash:'Наличными при получении'};
-function goLabel(){const s=rub(sum());document.getElementById('go').textContent=pay==='card'?'Оплатить картой, '+s:'Оформить заказ, '+s}
+let zone='city';const ZF={city:200,out:500};const fee=()=>mode==='delivery'&&sum()>0?ZF[zone]:0;const total=()=>sum()+fee();
+function feeNote(){const n=document.getElementById('sumNote');if(n)n.textContent=mode==='delivery'?('в том числе доставка '+(zone==='city'?'по Александрову':'за город')+' '+rub(fee())):'самовывоз, без доставки'}
+function goLabel(){feeNote();const s=rub(total());document.getElementById('go').textContent=pay==='card'?'Оплатить картой, '+s:'Оформить заказ, '+s}
 function drawLines(){const ids=Object.keys(cart);document.getElementById('emptyCart').classList.toggle('hide',ids.length>0||done);
   document.getElementById('checkout').classList.toggle('hide',!ids.length||done);document.getElementById('df').classList.toggle('hide',!ids.length||done);
   document.getElementById('lines').innerHTML=done?'':ids.map(id=>{const x=byId[id];return `<div class="li"><div class="t"><img src="img/${x.id}.webp" alt="" onerror="this.remove()"></div><div><b>${esc(x.n)}</b><span class="pr">${rub(x.p)} × ${cart[id]}</span></div><div class="step sm" data-id="${id}"><button data-a="-" aria-label="Убрать">−</button><span>${cart[id]}</span><button data-a="+" aria-label="Добавить">+</button></div></div>`}).join('');
-  document.getElementById('total').textContent=rub(sum());document.getElementById('upSum').textContent=rub(sum());goLabel()}
+  document.getElementById('total').textContent=rub(total());document.getElementById('upSum').textContent=rub(total());goLabel()}
+function setZone(z){zone=z;document.querySelectorAll('[data-zone]').forEach(x=>x.classList.toggle('on',x.dataset.zone===z));drawLines()}
+document.querySelectorAll('[data-zone]').forEach(b=>b.addEventListener('click',()=>{zoneManual=true;setZone(b.dataset.zone)}));let zoneManual=false;
+document.getElementById('aCity').addEventListener('input',e=>{const t=e.target.value.trim().toLowerCase();if(!t)return;setZone(/^г?\.?\s*александров/.test(t)?'city':'out')});
 document.getElementById('pays').addEventListener('click',e=>{const b=e.target.closest('[data-pay]');if(!b)return;pay=b.dataset.pay;document.querySelectorAll('.pay').forEach(x=>x.classList.toggle('on',x===b));goLabel()});
-document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('addr').classList.toggle('hide',mode!=='delivery');document.getElementById('pickupInfo').classList.toggle('hide',mode==='delivery');document.getElementById('sumNote').textContent=mode==='delivery'?'доставка рассчитывается отдельно':'самовывоз, без доставки'}));
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('addr').classList.toggle('hide',mode!=='delivery');document.getElementById('pickupInfo').classList.toggle('hide',mode==='delivery');drawLines()}));
 document.querySelectorAll('[data-ht]').forEach(b=>b.addEventListener('click',()=>{ht=b.dataset.ht;document.querySelectorAll('[data-ht]').forEach(x=>x.classList.toggle('on',x===b));document.querySelector('.flat-only').classList.toggle('hide',ht!=='flat');document.querySelector('.house-only').classList.toggle('hide',ht==='flat')}));
 const v=id=>document.getElementById(id).value.trim();
 function validate(){const need=[['name','cName',x=>x.length>1],['phone','cPhone',x=>x.replace(/\D/g,'').length===11]];
@@ -637,18 +644,21 @@ document.getElementById('upNo').addEventListener('click',()=>{closeUp();finish()
 document.getElementById('upYes').addEventListener('click',()=>{closeUp();finish()});
 function finish(){const a=mode==='pickup'?'Самовывоз: Калининская ул., 1/1':[v('aCity'),v('aStreet'),'д. '+v('aHouse'),ht==='flat'?('подъезд '+v('aEntr')+', кв. '+v('aApt')+(v('aFloor')?', этаж '+v('aFloor'):'')+(v('aCode')?', домофон '+v('aCode'):'')):(v('aMark')?'ориентир: '+v('aMark'):'')].filter(Boolean).join(', ');
   document.getElementById('doneH').textContent=pay==='card'?'Заказ оплачен':'Заказ принят';
-  document.getElementById('doneTxt').innerHTML=`${esc(v('cName'))}, ${esc(v('cPhone'))}<br>${esc(a)}<br>Сумма: <b>${rub(sum())}</b>, ${esc(PAYN[pay].toLowerCase())}`;
+  document.getElementById('doneTxt').innerHTML=`${esc(v('cName'))}, ${esc(v('cPhone'))}<br>${esc(a)}<br>Сумма: <b>${rub(total())}</b>${fee()?' (блюда '+rub(sum())+' + доставка '+rub(fee())+')':''}, ${esc(PAYN[pay].toLowerCase())}`;
   done=true;document.getElementById('done').classList.remove('hide');drawLines()}
 document.getElementById('again').addEventListener('click',()=>{cart={};done=false;upShown=false;document.getElementById('done').classList.add('hide');refresh();closeD()});
 
 // первый экран: видео, слова заголовка
 (function(){const h=document.getElementById('h1');h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="wd" style="transition-delay:${(i*.07).toFixed(2)}s">${w}</span>`).join(' ');
  const v=document.getElementById('hv'),calm=matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData);
- if(!calm){v.play().catch(()=>{})}
+ v.muted=true;v.play().catch(()=>{});
+ // телефон в режиме энергосбережения не запускает видео сам: запускаем по первому касанию или прокрутке
+ const kick=()=>{const vis=el=>{const r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight};if(v.paused&&vis(v))v.play().catch(()=>{});const f=document.getElementById('fv');if(f&&f.paused&&vis(f)){f.preload='auto';f.play().catch(()=>{})}};
+ ['touchstart','scroll','click'].forEach(t=>addEventListener(t,kick,{passive:true}));
  requestAnimationFrame(()=>requestAnimationFrame(()=>document.getElementById('hero').classList.add('in')));
  // рыба: грузим и играем, только когда видно
- const fv=document.getElementById('fv');if(!calm)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fv.preload='auto';fv.play().catch(()=>{})}else fv.pause()}),{threshold:.25}).observe(fv);
- if(!calm){const chk=()=>{const r=fv.getBoundingClientRect(),on=r.top<innerHeight*.8&&r.bottom>innerHeight*.2;if(on&&fv.paused){fv.preload='auto';fv.play().catch(()=>{})}else if(!on&&!fv.paused)fv.pause()};addEventListener('scroll',chk,{passive:true});chk()}
+ const fv=document.getElementById('fv');fv.muted=true;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fv.preload='auto';fv.play().catch(()=>{})}else fv.pause()}),{threshold:.25}).observe(fv);
+ {const chk=()=>{const r=fv.getBoundingClientRect(),on=r.top<innerHeight*.8&&r.bottom>innerHeight*.2;if(on&&fv.paused){fv.preload='auto';fv.play().catch(()=>{})}else if(!on&&!fv.paused)fv.pause()};addEventListener('scroll',chk,{passive:true});chk()}
  // лента с мангала едет вбок при прокрутке (компьютер)
  const sec=document.getElementById('picks'),rail=document.getElementById('rail'),bar=document.getElementById('barI');
  function setup(){if(innerWidth<1000||calm){sec.classList.remove('pin');rail.style.transform='';return}
