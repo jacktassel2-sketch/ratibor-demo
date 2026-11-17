@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Ратибор — шашлык на углях в Александрове</title>
 <meta name="description" content="Кафе «Ратибор», Александров, Калининская, 1/1. Шашлык на углях, рыба с мангала, хачапури. Доставка и самовывоз с оплатой картой онлайн, бронь стола.">
-<meta name="theme-color" content="#1d1613">
+<meta name="theme-color" content="#140f0d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -280,15 +280,76 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .cart-btn.bump{animation:bump .35s ease}
 @keyframes bump{40%{transform:scale(1.12)}}
 @media (prefers-reduced-motion:reduce){.hero h1 .wd,.hero p,.hero .cta,.hero .meta{opacity:1;transform:none}}
+
+/* тёмная тема целиком + символ Ратибора: меч из вывески, красный как буквы на фасаде */
+:root{--ash:#140f0d;--ash2:#2e241f;--paper:#1a1411;--ink:#f1e8de;--ink2:#c7b8aa;--mute:#958677;--sign:#d23a2c}
+body{background:var(--ash);color:var(--ink)}
+.logo{display:inline-flex;align-items:flex-end}
+.logo .sw{width:.42em;height:1.26em;color:var(--sign);margin:0 .02em -.08em;filter:drop-shadow(0 0 6px rgba(210,58,44,.6))}
+.divider{display:flex;align-items:center;gap:18px;max-width:1200px;margin:0 auto;padding:0 20px;color:var(--sign)}
+.divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,#4a3a31,transparent)}
+.divider svg{width:96px;height:32px;filter:drop-shadow(0 0 8px rgba(210,58,44,.45))}
+.h2{color:#fff}
+.lead{color:var(--ink2)}
+.menu{background:var(--paper)}
+.tabs{background:rgba(26,20,17,.94);border-bottom-color:var(--ash2)}
+.tab{color:var(--ink2)}.tab:hover{background:var(--ash2)}
+.tab.on{background:var(--copper);color:#1d1613}
+.mhead h3{color:#fff}
+.search{background:var(--ash);border-color:var(--ash2)}.search input{color:#fff}
+.card,.set,.halls li{background:#221a16}
+.card h4,.set h3,.halls b{color:#fff}
+.card p,.set p{color:var(--mute)}
+.card .ph,.set .ph,.li .t,.up .t{background:#2a201b}
+.add{border-color:rgba(241,232,222,.45);color:var(--ink)}
+.add:hover{background:var(--copper);border-color:var(--copper);color:#1d1613}
+.tile{box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.drawer,.mbox{background:#17110f;color:var(--ink)}
+.dh h3,.mh h3{color:#fff}
+.x{background:var(--ash2);color:#fff}
+.df,.mf{background:#1d1613;border-color:var(--ash2)}
+.li,.up{border-color:var(--ash2)}
+.seg{background:var(--ash2)}.seg button{color:var(--ink2)}.seg button.on{background:var(--copper);color:#1d1613;box-shadow:none}
+.pay{background:#1d1613;border-color:var(--ash2)}
+.pay.on{border-color:var(--copper);box-shadow:inset 0 0 0 1px var(--copper)}
+.pay.on i{border-color:var(--copper)}.pay.on i:after{background:var(--copper)}
+.pay em{background:#24331f;color:#9fc48f}
+.f label{color:var(--ink2)}
+.f input,.f textarea{background:#120d0b;border-color:var(--ash2);color:#fff}
+.f input:focus,.f textarea:focus{border-color:var(--copper)}
+.f.err input{background:#2b1311}
+.btn-ghost{border-color:var(--ash2);color:#fff}
+.toast{background:var(--copper);color:#1d1613}
+.btn-dark{background:var(--copper);color:#1d1613}
+/* бронь: фасад как замок ночью, окна мерцают */
+.castle{position:relative;overflow:hidden;background:#07060a;padding:110px 0}
+.cbg{position:absolute;inset:0}
+.cbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.cbg .glow{mix-blend-mode:screen;opacity:.55;animation:flick 4.5s ease-in-out infinite;will-change:opacity}
+@keyframes flick{0%,100%{opacity:.45}30%{opacity:.7}55%{opacity:.5}75%{opacity:.8}}
+.cbg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,6,10,.92) 0%,rgba(7,6,10,.7) 42%,rgba(7,6,10,.15) 75%,rgba(7,6,10,.35)),linear-gradient(0deg,#140f0d 0%,transparent 25%,transparent 80%,#140f0d)}
+@media (min-width:900px){.castle .cbg img{left:auto;width:52%;object-position:50% 30%}.cbg:after{background:linear-gradient(90deg,#07060a 0%,#07060a 46%,rgba(7,6,10,.35) 62%,rgba(7,6,10,.05) 85%),linear-gradient(0deg,#140f0d 0%,transparent 22%,transparent 82%,#140f0d)}}
+@media (max-width:899px){.castle{padding-top:0}.castle .cbg{position:relative;height:420px;margin-bottom:-60px}.castle .cbg img{object-position:50% 40%}.cbg:after{background:linear-gradient(0deg,#140f0d 0%,rgba(20,15,13,.2) 45%,rgba(7,6,10,.2) 100%)}}
+.castle .wrap{position:relative;z-index:2}
+.castle .book{grid-template-columns:minmax(0,560px)}
+.castle .halls li{background:rgba(29,22,19,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.castle .form{background:rgba(23,17,15,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.07)}
+.form label{color:var(--ink2)}
+.form input,.form select{background:#120d0b;border-color:var(--ash2);color:#fff}
+.castle .h2{text-shadow:0 2px 20px rgba(0,0,0,.6)}
+@media (prefers-reduced-motion:reduce){.cbg .glow{animation:none}}
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sword" viewBox="0 0 40 120"><path d="M20 0 L27 12 L27 76 L13 76 L13 12 Z" fill="currentColor"/><path d="M20 6 L20 74" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="0" y="76" width="40" height="8" rx="4" fill="currentColor"/><rect x="15" y="84" width="10" height="22" rx="3" fill="currentColor" opacity=".85"/><circle cx="20" cy="111" r="8" fill="currentColor"/></symbol>
+</defs></svg>
 <div class="demo-bar"><b>Концепт нового сайта.</b> Меню и цены взяты с ratibor.pro 17.11.2026. В демо заказы, оплата и брони никуда не отправляются.</div>
 
 <header class="top">
   <div class="wrap">
-    <a href="#" class="logo">Ратибор</a>
+    <a href="#" class="logo" aria-label="Ратибор">Ра<svg class="sw" viewBox="0 0 40 120" aria-hidden="true"><use href="#sword"/></svg>ибор</a>
     <nav aria-label="Разделы">
       <a href="#menu">Меню</a>
       <a href="#sets">Наборы</a>
@@ -324,6 +385,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div></div>
 </section>
 
+<div class="divider" aria-hidden="true"><span></span><svg viewBox="0 0 120 40"><path d="M2 20 L14 15 L78 15 L78 25 L14 25 Z" fill="currentColor"/><rect x="78" y="4" width="8" height="32" rx="4" fill="currentColor"/><rect x="86" y="16" width="20" height="8" rx="3" fill="currentColor" opacity=".85"/><circle cx="110" cy="20" r="7" fill="currentColor"/></svg><span></span></div>
 <section class="sec" id="cats">
   <div class="wrap">
     <h2 class="h2">Меню</h2>
@@ -353,6 +415,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+<div class="divider" aria-hidden="true"><span></span><svg viewBox="0 0 120 40"><path d="M2 20 L14 15 L78 15 L78 25 L14 25 Z" fill="currentColor"/><rect x="78" y="4" width="8" height="32" rx="4" fill="currentColor"/><rect x="86" y="16" width="20" height="8" rx="3" fill="currentColor" opacity=".85"/><circle cx="110" cy="20" r="7" fill="currentColor"/></svg><span></span></div>
 <section class="sec" id="sets">
   <div class="wrap">
     <h2 class="h2">Наборы для компании</h2>
@@ -373,7 +436,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
-<section class="sec" id="book">
+<section class="sec castle" id="book">
+  <div class="cbg" aria-hidden="true"><img src="img/castle.webp" alt="" loading="lazy" decoding="async"><img class="glow" src="img/castle-glow.webp" alt="" loading="lazy" decoding="async"></div>
   <div class="wrap book">
     <div>
       <h2 class="h2">Забронировать стол</h2>
